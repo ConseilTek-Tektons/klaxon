@@ -1,0 +1,30 @@
+{
+  "realm": "klaxon",
+  "enabled": true,
+  "displayName": "Klaxon local identity broker",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "clients": [
+    {
+      "clientId": "klaxon-web",
+      "name": "Klaxon Web",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "local-dev-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:3000/api/auth/callback/enterprise-sso"],
+      "webOrigins": ["http://localhost:3000"],
+      "protocol": "openid-connect",
+      "defaultClientScopes": ["web-origins", "acr", "roles", "profile", "email", "groups"]
+    }
+  ],
+  "groups": [
+    { "name": "klaxon-owners" },
+    { "name": "klaxon-admins" },
+    { "name": "incident-commanders" },
+    { "name": "responders" },
+    { "name": "incident-observers" },
+    { "name": "reliability-auditors" }
+  ]
+}

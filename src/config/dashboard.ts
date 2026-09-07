@@ -1,0 +1,51 @@
+export type DashboardItem = { id: number; primary: string; secondary: string; tertiary: string; status: string; accent: "lime" | "violet" | "cyan" };
+type DashboardConfig = { eyebrow: string; heading: string; summary: string; primaryAction: string; secondaryAction: string; secondaryNotice: string; managePermission: string; metricLabel: string; metrics: { label: string; value: string; change: string; context: string; tone: "positive" | "warning"; progress: string }[]; trend: { label: string; value: number }[]; listTitle: string; workspaceAction: string; items: DashboardItem[]; sideTitle: string; sideSubtitle: string; sideItems: { title: string; detail: string; value: string; warning?: boolean }[]; insightTitle: string; insightBody: string; insightNotice: string; itemNoun: string; modalEyebrow: string; modalTitle: string; formFields: { name: string; label: string; placeholder: string }[]; defaultSecondary: string; defaultTertiary: string; newItemStatus: string; policyPreview: string; submitLabel: string };
+
+export const dashboard: DashboardConfig = {
+  eyebrow: "RELIABILITY COMMAND · LIVE",
+  heading: "Systems are stable. The responder load is not.",
+  summary: "Active incidents, alert grouping, on-call coverage, and escalation delivery stay visible in one command view.",
+  primaryAction: "Declare incident",
+  secondaryAction: "View on-call",
+  secondaryNotice: "Current rotations loaded with overrides and time-zone handoffs.",
+  managePermission: "incidents.manage",
+  metricLabel: "Incident response health",
+  metrics: [
+    { label: "Alerts grouped", value: "1,284", change: "94%", context: "noise removed", tone: "positive", progress: "94%" },
+    { label: "Active incidents", value: "2", change: "1 SEV-2", context: "payments", tone: "warning", progress: "35%" },
+    { label: "Median acknowledge", value: "2m 18s", change: "↓ 42s", context: "this month", tone: "positive", progress: "76%" },
+    { label: "Coverage", value: "100%", change: "3 overrides", context: "next 24 hours", tone: "positive", progress: "100%" },
+  ],
+  trend: [42, 31, 55, 28, 67, 38, 24].map((value, index) => ({ label: String(index), value })),
+  listTitle: "Incident timeline",
+  workspaceAction: "Open incident command",
+  items: [
+    { id: 1, primary: "INC-2048 · Checkout latency", secondary: "Payments API", tertiary: "Commander: Priya", status: "Mitigating", accent: "violet" },
+    { id: 2, primary: "INC-2047 · EU login errors", secondary: "Identity", tertiary: "Monitoring", status: "Resolved", accent: "lime" },
+    { id: 3, primary: "ALR-8831 · Worker backlog", secondary: "Fulfilment", tertiary: "Grouped 38 alerts", status: "Watching", accent: "cyan" },
+    { id: 4, primary: "INC-2046 · Search saturation", secondary: "Knowledge", tertiary: "PIR due Friday", status: "Closed", accent: "lime" },
+  ],
+  sideTitle: "On-call services",
+  sideSubtitle: "Delivery and escalation status",
+  sideItems: [
+    { title: "Payments", detail: "Primary acknowledged", value: "Healthy" },
+    { title: "Identity", detail: "Fallback step in 8 minutes", value: "Watch", warning: true },
+    { title: "Fulfilment", detail: "Override until 18:00 UTC", value: "Covered" },
+  ],
+  insightTitle: "Identity pages are clustering after handoff.",
+  insightBody: "Four pages reached the second escalation step within 20 minutes of the EMEA handoff. Review the rotation overlap before tomorrow.",
+  insightNotice: "Handoff analysis opened with the supporting notifications.",
+  itemNoun: "Incident",
+  modalEyebrow: "DECLARE INCIDENT",
+  modalTitle: "Start incident command",
+  formFields: [
+    { name: "title", label: "Incident title", placeholder: "Customer impact" },
+    { name: "service", label: "Affected service", placeholder: "Payments API" },
+    { name: "severity", label: "Severity", placeholder: "SEV-2" },
+  ],
+  defaultSecondary: "Unassigned service",
+  defaultTertiary: "SEV-3",
+  newItemStatus: "Investigating",
+  policyPreview: "Declaring an incident starts the timeline, resolves the current on-call target, and writes an immutable audit event.",
+  submitLabel: "Declare incident",
+};

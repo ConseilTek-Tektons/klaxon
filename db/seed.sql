@@ -1,0 +1,13 @@
+insert into organisation (id, name, slug) values ('00000000-0000-4000-8000-000000000001', 'ConseilTek Operations', 'conseiltek-operations');
+insert into app_user (id, organisation_id, identity_subject, email, display_name, phone) values
+  ('10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', 'demo-responder', 'responder@example.test', 'Demo Responder', '+15555550101'),
+  ('10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000001', 'demo-commander', 'commander@example.test', 'Demo Commander', '+15555550102');
+insert into team (id, organisation_id, name, slug) values ('20000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', 'Digital Reliability', 'digital-reliability');
+insert into service (id, team_id, name, slug, tier, runbook_url) values ('30000000-0000-4000-8000-000000000001', '20000000-0000-4000-8000-000000000001', 'Checkout API', 'checkout-api', 0, 'https://example.test/runbooks/checkout');
+insert into on_call_schedule (id, team_id, name, timezone, handoff_time) values ('40000000-0000-4000-8000-000000000001', '20000000-0000-4000-8000-000000000001', 'Primary rotation', 'America/New_York', '09:00');
+insert into rotation (schedule_id, user_id, position, starts_at, rotation_hours) values ('40000000-0000-4000-8000-000000000001', '10000000-0000-4000-8000-000000000001', 1, date_trunc('week', now()), 168);
+insert into escalation_policy (team_id, name, steps, repeat_count) values ('20000000-0000-4000-8000-000000000001', 'Critical service policy', '[{"delayMinutes":0,"target":"primary"},{"delayMinutes":10,"target":"commander"}]', 2);
+insert into alert (id, organisation_id, service_id, source, external_id, fingerprint, title, severity, status, first_seen_at, last_seen_at) values ('50000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', '30000000-0000-4000-8000-000000000001', 'cloud-monitor', 'alert-7421', repeat('a',64), 'Checkout latency above SLO', 'critical', 'acknowledged', now() - interval '12 minutes', now() - interval '2 minutes');
+insert into incident (id, organisation_id, service_id, commander_id, title, severity, status, summary) values ('60000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', '30000000-0000-4000-8000-000000000001', '10000000-0000-4000-8000-000000000002', 'Elevated checkout latency', 'sev1', 'mitigating', 'Traffic shifted while the primary database is assessed.');
+insert into incident_alert (incident_id, alert_id) values ('60000000-0000-4000-8000-000000000001', '50000000-0000-4000-8000-000000000001');
+insert into timeline_entry (incident_id, actor_id, entry_type, body) values ('60000000-0000-4000-8000-000000000001', 'demo-commander', 'status', 'Incident declared and responders paged.');
