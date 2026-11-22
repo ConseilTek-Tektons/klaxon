@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="public/brand/mark-light.png" alt="ConseilTek" width="120" />
+  <img src="public/brand/logo.png" alt="ConseilTek" width="180" />
   <h1>Klaxon</h1>
   <p><strong>On-call that pages people, not your budget.</strong></p>
   <p>Alert grouping · escalation · incident command · enterprise SSO · configurable RBAC · PostgreSQL · grounded AI</p>
 </div>
 
-[![CI](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/ci.yml/badge.svg)](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/ci.yml) [![CodeQL](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/codeql.yml/badge.svg)](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/codeql.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-a3ff12)](LICENSE)
+[![CI](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/ci.yml/badge.svg)](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/ci.yml) [![CodeQL](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/codeql.yml/badge.svg)](https://github.com/ConseilTek-Tektons/klaxon/actions/workflows/codeql.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-222c62)](LICENSE)
 
 Klaxon gives reliability teams an accountable path from noisy telemetry to a human response: normalize and group alerts, resolve the effective on-call person, escalate through versioned policy, and coordinate an incident on an append-only timeline. This repository contains the working application and the deployment package—not a UI mockup.
 
